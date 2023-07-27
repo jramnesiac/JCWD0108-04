@@ -20,11 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.INTEGER,
       allowNull : false
     },
-    buyerAmmount : {
+    cash : {
       type : DataTypes.INTEGER,
       allowNull : false
     },
-    buyerChange : {
+    change : {
       type : DataTypes.INTEGER,
       allowNull : false,
       defaultValue : true,

@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model, ForeignKeyConstraintError
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class transDetail extends Model {
@@ -18,7 +18,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   transDetail.init({
-    productQty : {
+    productName : {
+      type : DataTypes.STRING,
+      allowNull : false
+    },
+    productPrice : {
+      type : DataTypes.INTEGER,
+      allowNull : false
+    },
+    productCategory : {
+      type : DataTypes.INTEGER,
+      allowNull : false
+    },
+    qty : {
+      type : DataTypes.INTEGER,
+      allowNull : false
+    },
+    totalQty : {
+      type : DataTypes.INTEGER,
+      allowNull : false
+    },
+    totalPriceItem : {
       type : DataTypes.INTEGER,
       allowNull : false
     }
