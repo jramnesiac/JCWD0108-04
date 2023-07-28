@@ -12,10 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       transaction.belongsTo(models.user);
-      transaction.hasMany(models.transDetail);
+      transaction.hasMany(models.transDetail, {foreignKey : 'transactionId'});
     }
   }
   transaction.init({
+    transactionId : {
+      type : DataTypes.STRING,
+      primaryKey : true
+    },
     total: {
       type : DataTypes.INTEGER,
       allowNull : false

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      transDetail.belongsTo(models.transaction);
+      transDetail.belongsTo(models.transaction, {foreignKey : 'transactionId'});
       transDetail.belongsTo(models.user);
       transDetail.belongsTo(models.product);
 
@@ -30,10 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.INTEGER,
       allowNull : false
     },
-    qty : {
-      type : DataTypes.INTEGER,
-      allowNull : false
-    },
     totalQty : {
       type : DataTypes.INTEGER,
       allowNull : false
@@ -48,6 +44,6 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true,
     updatedAt : false
   });
-  transDetail.removeAttribute('id');
+  // transDetail.removeAttribute('id');
   return transDetail;
 };
