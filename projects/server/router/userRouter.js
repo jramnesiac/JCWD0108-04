@@ -1,9 +1,14 @@
 const express = require('express');
-const useController = require('../controller/userController');
+
 const transController = require('../controller/transaction');
+const userController = require('../controller/userController');
+const { vLogin } = require('../middleware/login');
+
 const router = express.Router();
 
-router.get('/homee', useController.greet);
+router.post('/login',vLogin ,userController.login);
 router.patch('/transaction', transController.checkOut);
+router.get('/products', userController.getProducts);
+router.get('/categories', userController.getCategories);
 
 module.exports = router;
