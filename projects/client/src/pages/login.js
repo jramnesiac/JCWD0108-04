@@ -3,7 +3,7 @@ import { SignedIn, SignedOut, SignInButton, SignOutButton, useUser } from "@cler
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import "../css/login.css"; // Import custom CSS for Login component
 
-const Login = (props) => {
+const Logins = (props) => {
   const { user } = useUser();
 
   return (
@@ -42,4 +42,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Logins;

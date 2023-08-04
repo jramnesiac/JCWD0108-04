@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import {ItemCard, ListCategories, NavbarComponents, ResultComponents} from "../components"
 import Axios from "axios";
 
-const Home = () => {
+const Homes = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [category, setCategory] = useState([1]);
@@ -83,7 +83,7 @@ const Home = () => {
                 })}
               </Row>
             ):(<p></p>)}
-          </Col>
+          </Col>    
           <ResultComponents />
         </Row>
       </Container>
@@ -92,5 +92,5 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default Homes;
 

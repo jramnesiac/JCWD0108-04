@@ -1,46 +1,58 @@
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-// import { Col, Container, Row } from "react-bootstrap";
-// import {ResultComponents, ListCategories, NavbarComponents} from "./components"
-import './App.css';
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import Home from './pages/home';
-// import ProductForm from './components/addProducts';
-import Login from './pages/login';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from './pages/Dashboard';
+import Home from './pages/Home.jsx'
+import Login from './pages/Login.jsx'
+import Register from './pages/Register'
+import Cart from './pages/Cart'
+import Orders from './pages/Orders'
+import Content from './pages/Content'
+import Modal from './components/Modal'
+import CategoryProducts from './pages/CategoryProducts'
+import NotFound from './pages/NotFound'
+import PrivateRoute from './pages/PrivateRoute'
 
 function App() {
-  // const [message, setMessage] = useState("");
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const { data } = await axios.get(
-  //       `${process.env.REACT_APP_API_BASE_URL}/greetings`
-  //     );
-  //     setMessage(data?.message || "");
-  //   })();
-  // }, []);
   return (
-    <div className="App">
-      
-      <Login />
-      
-    </div>
-    // <div className="App">
-    //   <NavbarComponents />
-    //   <div className="mt-3">
-    //     <Container fluid>
-    //     <Row>
-    //       <ListCategories />
-    //       <Col>
-    //         <h4>Dafar Produk</h4>
-    //         <hr />
-    //       </Col>
-    //       <ResultComponents />
-    //     </Row>
-    //     </Container>
-    //   </div>
-    // </div>
+    <>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+             <Route
+              path='/dashboard'
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            >
+              <Route path='' element={<Content />} />
+              <Route path='orders' element={<Orders />} />
+              <Route path='form' element={<Modal />} />
+              <Route path='category/:category' element={<CategoryProducts />} />
+             
+            </Route>
+
+            <Route
+              path='/cart'
+              element={
+                <PrivateRoute>
+                  <Cart />
+                </PrivateRoute>
+              }
+            />
+             <Route path='*' element={<NotFound />}/>
+          </Routes>     
+          
+      </div>
+      </Router>
+      <ToastContainer />
+    </>
   );
 }
 
