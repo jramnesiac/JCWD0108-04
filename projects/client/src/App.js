@@ -5,7 +5,9 @@
 import './App.css';
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './pages/home';
+// import Home from './pages/home';
+// import ProductForm from './components/addProducts';
+import Login from './pages/login';
 
 function App() {
   // const [message, setMessage] = useState("");
@@ -20,7 +22,9 @@ function App() {
   // }, []);
   return (
     <div className="App">
-      <Home />
+      
+      <Login />
+      
     </div>
     // <div className="App">
     //   <NavbarComponents />
